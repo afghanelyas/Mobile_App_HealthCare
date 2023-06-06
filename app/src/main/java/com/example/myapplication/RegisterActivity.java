@@ -30,6 +30,9 @@ public class RegisterActivity extends AppCompatActivity {
         btn = findViewById(R.id.buttonRegister);
         tv = findViewById(R.id.textViewExistingUser);
 
+//        connect to the database
+        Database db = new Database(getApplicationContext(),"healthcare" , null , 1);
+
 
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,10 +54,15 @@ public class RegisterActivity extends AppCompatActivity {
                 }else{
                     if(password.compareTo(confirm) == 0){
                         if(validatePassword(password)){
-                            Toast.makeText(getApplicationContext(),"success" , Toast.LENGTH_SHORT).show();
+
+                            db.register(username, email , password);
+                            Toast.makeText(getApplicationContext(),"Record Inserted" , Toast.LENGTH_SHORT).show();
                         }else{
-                            Toast.makeText(getApplicationContext(), "try" , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Password must contain at least 8 characters" , Toast.LENGTH_SHORT).show();
                         }
+                    }else {
+                        Toast.makeText(getApplicationContext(), "Password and confirm password  didn't much" , Toast.LENGTH_SHORT).show();
+
                     }
 
                 }
