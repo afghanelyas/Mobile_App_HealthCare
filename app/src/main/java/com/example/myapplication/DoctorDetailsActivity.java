@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -100,5 +101,19 @@ public class DoctorDetailsActivity extends AppCompatActivity {
                 );
         ListView lst = findViewById(R.id.listviewDD);
         lst.setAdapter(sa);
+
+        lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
+                Intent intent = new Intent(DoctorDetailsActivity.this, BookAppointmentActivity.class);
+                intent.putExtra("text1" , title);
+                intent.putExtra("text2" , doctor_details[i][0]);
+                intent.putExtra("text3" ,  doctor_details[i][1]);
+                intent.putExtra("text4" ,  doctor_details[i][3]);
+                intent.putExtra("text5" ,  doctor_details[i][4]);
+                startActivity(intent);
+
+            }
+        });
     }
 }
