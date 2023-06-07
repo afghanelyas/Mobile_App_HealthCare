@@ -31,12 +31,12 @@ public class LoginActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                 //check the username and password empty
 
-                String username = edUsername.getText().toString();
-                String password = edPassword.getText().toString();
-                Database db = new Database(getApplicationContext() , "healthcare" , null , 1);
+//                String username = edUsername.getText().toString();
+//                String password = edPassword.getText().toString();
+//                Database db = new Database(getApplicationContext() , "healthcare" , null , 1);
 
 //                if(username.length() == 0 || password.length() == 0){
 //                    Toast.makeText(getApplicationContext(), "Please fill all details" , Toast.LENGTH_SHORT).show();
