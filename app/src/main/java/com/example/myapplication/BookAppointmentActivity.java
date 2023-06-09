@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -10,6 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.text.BreakIterator;
+import java.util.Calendar;
 
 public class BookAppointmentActivity extends AppCompatActivity {
     EditText ed1, ed2, ed3, ed4;
@@ -47,8 +51,25 @@ public class BookAppointmentActivity extends AppCompatActivity {
         ed3.setText(contact);
         ed4.setText("Cons Fess:"+fees+"$");
 
-
     }
 
+    private void initDatePicker(){
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+              month = month + year;
+//              dateButton.setText(dayOfMonth+"/"+month+"/"+year);
+         }
+        };
+
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+
+        int style = AlertDialog.THEME_HOLO_DARK;
+        datePickerDialog = new DatePickerDialog(this, style , dateSetListener, year , month, day);
+        datePickerDialog.getDatePicker().setMinDate(cal.getTimeInMillis()+848400000);
+    }
     }
 
