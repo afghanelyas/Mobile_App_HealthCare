@@ -56,6 +56,7 @@ public class DoctorDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_details);
+
         tv = findViewById(R.id.textViewDDTitle);
         btn = findViewById(R.id.buttonDDBack);
 
@@ -112,7 +113,6 @@ public class DoctorDetailsActivity extends AppCompatActivity {
                 intent.putExtra("text4" ,  doctor_details[i][3]);
                 intent.putExtra("text5" ,  doctor_details[i][4]);
                 startActivity(intent);
-
             }
         });
     }
